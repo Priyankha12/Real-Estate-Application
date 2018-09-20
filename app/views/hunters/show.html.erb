@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @hunter.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @hunter.password %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @hunter.full_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @hunter.phone %>
+</p>
+
+<p>
+  <strong>Contact method:</strong>
+  <%= @hunter.contact_method %>
+</p>
+
+<%= link_to 'Edit', edit_hunter_path(@hunter) %> |
+<%= link_to 'Back', hunters_path %>

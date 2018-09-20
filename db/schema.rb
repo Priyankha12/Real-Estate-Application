@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_012110) do
+ActiveRecord::Schema.define(version: 2018_09_20_165207) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_09_20_012110) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.integer "company_id"
     t.string "location"
     t.integer "square_footage"
     t.date "year"
@@ -30,10 +29,13 @@ ActiveRecord::Schema.define(version: 2018_09_20_012110) do
     t.integer "floors"
     t.boolean "basement"
     t.string "current_owner"
-    t.integer "realtor_id"
     t.string "hunter_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "real_estate_company_id"
+    t.integer "realtor_id"
+    t.index ["real_estate_company_id"], name: "index_houses_on_real_estate_company_id"
+    t.index ["realtor_id"], name: "index_houses_on_realtor_id"
   end
 
   create_table "hunters", force: :cascade do |t|
@@ -47,12 +49,14 @@ ActiveRecord::Schema.define(version: 2018_09_20_012110) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "hunter_id"
-    t.integer "house_id"
     t.string "subject"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "house_id"
+    t.integer "hunter_id"
+    t.index ["house_id"], name: "index_inquiries_on_house_id"
+    t.index ["hunter_id"], name: "index_inquiries_on_hunter_id"
   end
 
   create_table "real_estate_companies", force: :cascade do |t|
@@ -71,10 +75,11 @@ ActiveRecord::Schema.define(version: 2018_09_20_012110) do
     t.string "email"
     t.string "name"
     t.string "password"
-    t.integer "company_id"
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "real_estate_company_id"
+    t.index ["real_estate_company_id"], name: "index_realtors_on_real_estate_company_id"
   end
 
 end

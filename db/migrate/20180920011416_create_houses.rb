@@ -1,7 +1,7 @@
 class CreateHouses < ActiveRecord::Migration[5.2]
   def change
     create_table :houses do |t|
-      t.integer :company_id
+      t.integer :real_estate_company_id
       t.string :location
       t.integer :square_footage
       t.date :year

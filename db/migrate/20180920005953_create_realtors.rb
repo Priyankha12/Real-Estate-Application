@@ -4,7 +4,7 @@ class CreateRealtors < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :name
       t.string :password
-      t.integer :company_id
+      t.integer :real_estate_company_id
       t.string :phone
 
       t.timestamps

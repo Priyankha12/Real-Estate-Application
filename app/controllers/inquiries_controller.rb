@@ -69,6 +69,6 @@ class InquiriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inquiry_params
-      params.require(:inquiry).permit(:id, :hunter_id, :subject, :message)
+      params.require(:inquiry).permit(:id, :house_id, :hunter_id, :subject, :message)
     end
 end

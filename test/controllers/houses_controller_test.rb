@@ -17,7 +17,7 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create house" do
     assert_difference('House.count') do
-      post houses_url, params: { house: { basement: @house.basement, company_id: @house.company_id, current_owner: @house.current_owner, floors: @house.floors, hunter_ids: @house.hunter_ids, id: @house.id, location: @house.location, price: @house.price, realtor_id: @house.realtor_id, square_footage: @house.square_footage, style: @house.style, year: @house.year } }
+      post houses_url, params: { house: {basement: @house.basement, real_estate_company_id: @house.company_id, current_owner: @house.current_owner, floors: @house.floors, hunter_ids: @house.hunter_ids, id: @house.id, location: @house.location, price: @house.price, realtor_id: @house.realtor_id, square_footage: @house.square_footage, style: @house.style, year: @house.year } }
     end
 
     assert_redirected_to house_url(House.last)
@@ -34,7 +34,7 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update house" do
-    patch house_url(@house), params: { house: { basement: @house.basement, company_id: @house.company_id, current_owner: @house.current_owner, floors: @house.floors, hunter_ids: @house.hunter_ids, id: @house.id, location: @house.location, price: @house.price, realtor_id: @house.realtor_id, square_footage: @house.square_footage, style: @house.style, year: @house.year } }
+    patch house_url(@house), params: { house: {basement: @house.basement, real_estate_company_id: @house.company_id, current_owner: @house.current_owner, floors: @house.floors, hunter_ids: @house.hunter_ids, id: @house.id, location: @house.location, price: @house.price, realtor_id: @house.realtor_id, square_footage: @house.square_footage, style: @house.style, year: @house.year } }
     assert_redirected_to house_url(@house)
   end
 

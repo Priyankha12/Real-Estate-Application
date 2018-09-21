@@ -17,7 +17,7 @@ class RealtorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create realtor" do
     assert_difference('Realtor.count') do
-      post realtors_url, params: { realtor: { company_id: @realtor.company_id, email: @realtor.email, name: @realtor.name, password: @realtor.password, phone: @realtor.phone } }
+      post realtors_url, params: { realtor: {real_estate_company_id: @realtor.company_id, email: @realtor.email, name: @realtor.name, password: @realtor.password, phone: @realtor.phone } }
     end
 
     assert_redirected_to realtor_url(Realtor.last)
@@ -34,7 +34,7 @@ class RealtorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update realtor" do
-    patch realtor_url(@realtor), params: { realtor: { company_id: @realtor.company_id, email: @realtor.email, name: @realtor.name, password: @realtor.password, phone: @realtor.phone } }
+    patch realtor_url(@realtor), params: { realtor: {real_estate_company_id: @realtor.company_id, email: @realtor.email, name: @realtor.name, password: @realtor.password, phone: @realtor.phone } }
     assert_redirected_to realtor_url(@realtor)
   end
 

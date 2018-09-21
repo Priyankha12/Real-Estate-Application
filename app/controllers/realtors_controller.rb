@@ -14,6 +14,7 @@ class RealtorsController < ApplicationController
 
   # GET /realtors/new
   def new
+    #puts(Realtor.column_names)
     @realtor = Realtor.new
   end
 
@@ -25,7 +26,8 @@ class RealtorsController < ApplicationController
   # POST /realtors.json
   def create
     @realtor = Realtor.new(realtor_params)
-
+    puts(realtor_params)
+    #puts(Realtor.columns)
     respond_to do |format|
       if @realtor.save
         format.html { redirect_to @realtor, notice: 'Realtor was successfully created.' }
@@ -69,6 +71,6 @@ class RealtorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def realtor_params
-      params.require(:realtor).permit(:email, :name, :password, :company_id, :phone)
+      params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
     end
 end

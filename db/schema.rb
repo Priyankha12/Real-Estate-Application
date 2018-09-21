@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_165207) do
+ActiveRecord::Schema.define(version: 2018_09_21_023552) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -32,10 +32,9 @@ ActiveRecord::Schema.define(version: 2018_09_20_165207) do
     t.string "hunter_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "realtors_id"
     t.integer "real_estate_company_id"
     t.integer "realtor_id"
-    t.index ["real_estate_company_id"], name: "index_houses_on_real_estate_company_id"
-    t.index ["realtor_id"], name: "index_houses_on_realtor_id"
   end
 
   create_table "hunters", force: :cascade do |t|
@@ -55,8 +54,6 @@ ActiveRecord::Schema.define(version: 2018_09_20_165207) do
     t.datetime "updated_at", null: false
     t.integer "house_id"
     t.integer "hunter_id"
-    t.index ["house_id"], name: "index_inquiries_on_house_id"
-    t.index ["hunter_id"], name: "index_inquiries_on_hunter_id"
   end
 
   create_table "real_estate_companies", force: :cascade do |t|
@@ -79,7 +76,6 @@ ActiveRecord::Schema.define(version: 2018_09_20_165207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "real_estate_company_id"
-    t.index ["real_estate_company_id"], name: "index_realtors_on_real_estate_company_id"
   end
 
 end

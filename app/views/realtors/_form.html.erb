@@ -27,8 +27,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :company_id %>
-    <%= form.number_field :company_id %>
+    <%= form.label :real_estate_company_id %>
+    <%= select("realtor", "real_estate_company_id", RealEstateCompany.all.collect{ |c| [c.name, c.id] }) %>
   </div>
 
   <div class="field">

@@ -58,9 +58,25 @@ class RealtorsController < ApplicationController
   def destroy
     @realtor.destroy
     respond_to do |format|
-      format.html { redirect_to realtors_url, notice: 'Realtor was successfully destroyed.' }
+      format.html { redirect_to :realtors_url, notice: 'Realtor was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def realtor_houses
+   # @realtor=Realtor.new(realtor_params)
+  puts(@houses)
+
+  session[:houses] = params[:houses]
+  @houses=House.where("realtor_id=#{params[:id]}")
+  puts(@houses)
+  respond_to do |format|
+    format.html { redirect_to houses_url(@houses) }
+    format.json { head :no_content }
+  #puts "Reached"
+   # puts params[:id]
+  end
   end
 
   private

@@ -25,5 +25,6 @@
   <%= @realtor.phone %>
 </p>
 
-<%= link_to 'Edit', edit_realtor_path(@realtor) %> |
+<%= link_to 'Edit', edit_realtor_path(@realtor) %> <br>
+<%= link_to 'Your houses', realtor_houses_realtor_path(@realtor) %>|
 <%= link_to 'Back', realtors_path %>

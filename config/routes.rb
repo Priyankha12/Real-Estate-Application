@@ -6,5 +6,10 @@ Rails.application.routes.draw do
   resources :real_estate_companies
   resources :admins
   root 'admins#index'
+  resources :realtors do
+    member do
+      get :realtor_houses
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

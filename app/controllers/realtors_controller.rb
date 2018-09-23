@@ -66,17 +66,18 @@ class RealtorsController < ApplicationController
 
   def realtor_houses
    # @realtor=Realtor.new(realtor_params)
-  puts(@houses)
+  #puts(@houses)
 
-  session[:houses] = params[:houses]
+  #session[:houses] = params[:houses]
+   @id=params[:id]
   @houses=House.where("realtor_id=#{params[:id]}")
   puts(@houses)
-  respond_to do |format|
-    format.html { redirect_to houses_url(@houses) }
-    format.json { head :no_content }
+  #respond_to do |format|
+  #  format.html { redirect_to houses_url(@houses) }
+  #  format.json { head :no_content }
   #puts "Reached"
    # puts params[:id]
-  end
+  #end
   end
 
   private

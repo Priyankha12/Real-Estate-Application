@@ -3,27 +3,38 @@ Rails.application.routes.draw do
   resources :inquiries
   resources :hunters
   resources :houses
-  #resources :realtors
+  #resources :realtors, :path_prefix => 'my'
 
-#  devise_for :realtors, :controllers => { :registrations => 'realtors', :sessions => 'realtors' }
+# devise_for :realtors, :controllers => { :registrations => 'realtors', :sessions => 'realtors' }
 
   devise_for :realtors, :controllers => {
       :registrations => "realtors/registrations",
       :sessions => "realtors/sessions",
-      :passwords => "realtors/passwords",
-      :confirmations => "realtors/confirmations"
+     :passwords => "realtors/passwords",
+      :confirmations => "realtors/confirmations",
+      #:realtors => "realtors/realtors"
   }
 
 
-  devise_scope :realtors do
+  devise_scope :realtor do
     get 'sign_up', to: 'realtors/registrations#new'
     get 'sign_in' , to: 'realtors/sessions#new'
     delete 'sign_out', to: 'realtors/sessions#destroy'
-   # get '/realtors/:id', to: 'realtors/sessions#show', as: 'show_realtor_path'
+    resources :realtors
+   # get '/realtors/:id', to: 'realtors#show', as: 'realtor'
 
-end
+    #get '/realtors/:id', to: 'realtors#show'
+
+  end
+
+  #authenticated :realtor do
+   # resources :realtors , module: "realtors"
+  #end
  # end
+  #get '/realtors/:id' => 'realtors#show'
+
   resources :realtors
+  #get '/realtors', to: 'realtors#index'
 
   resources :real_estate_companies
   resources :admins

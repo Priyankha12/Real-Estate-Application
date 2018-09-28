@@ -15,7 +15,7 @@
   <%= link_to "Realtor Sign Up", new_realtor_registration_path %>
 
   <% if realtor_signed_in? %>
-  <%= link_to "Realtor Sign Out", destroy_realtor_session_path, methiod: :delete %>
+  <%= link_to "Realtor Sign Out", destroy_realtor_session_path, method: :delete %>
     <% else %>
     <%= link_to "Realtor Sign In", new_realtor_session_path %>
     <% end %>

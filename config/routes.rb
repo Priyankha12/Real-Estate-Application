@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'realtors/registrations#new'
     get 'sign_in' , to: 'realtors/sessions#new'
     delete 'sign_out', to: 'realtors/sessions#destroy'
-    resources :realtors
+    resources :realtors do
+      member do
+        get :realtor_houses
+      end
+    end
    # get '/realtors/:id', to: 'realtors#show', as: 'realtor'
 
     #get '/realtors/:id', to: 'realtors#show'
@@ -33,7 +37,11 @@ Rails.application.routes.draw do
  # end
   #get '/realtors/:id' => 'realtors#show'
 
-  resources :realtors
+  resources :realtors do
+    member do
+      get :realtor_houses
+    end
+  end
   #get '/realtors', to: 'realtors#index'
 
   resources :real_estate_companies

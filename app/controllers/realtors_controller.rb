@@ -72,7 +72,7 @@ class RealtorsController < Devise::RegistrationsController
   #session[:houses] = params[:houses]
    @id=params[:id]
   @houses=House.where("realtor_id=#{params[:id]}")
-  puts(@houses)
+  #puts(@houses)
   #respond_to do |format|
   #  format.html { redirect_to houses_url(@houses) }
   #  format.json { head :no_content }

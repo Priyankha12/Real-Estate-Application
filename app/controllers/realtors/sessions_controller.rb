@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Realtors::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
-  #before_action :set_realtor, only: [:show]#, :edit, :update, :destroy]
 
+ # before_action :configure_sign_in_params, only: [:create]
+  #before_action :set_realtor, only: [:show]#, :edit, :update, :destroy]
+  #after_action :set_realtor, only: [:create]
   # GET /resource/sign_in
    def new
      super
@@ -31,9 +32,11 @@ class Realtors::SessionsController < Devise::SessionsController
   #private
 
   #def set_realtor
-   # @realtor = Realtor.find(params[:id])
+   # @realtor = Realtor.
   #end
-   #def after_sign_in_path_for(resource)
-    #  "realtors#show"
-   #end
+   def after_sign_in_path_for(resource)
+     #format.html { redirect_to current_realtor, notice: 'Realtor successfully signed in.' }
+     #format.html { redirect_to realtor_path, notice: 'Realtor successfully signed in.' }
+      current_realtor
+   end
 end

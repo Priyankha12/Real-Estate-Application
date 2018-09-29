@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_hunter! , except: [:index, :show]
   # GET /houses
   # GET /houses.json
   def index
@@ -63,6 +63,7 @@ class HousesController < ApplicationController
     end
   end
 
+
   def potential_hunters
     # @realtor=Realtor.new(realtor_params)
     #puts(@houses)
@@ -94,6 +95,50 @@ class HousesController < ApplicationController
     #puts "Reached"
     # puts params[:id]
     #end
+  end
+
+  def search
+  end
+
+  def find
+    #houses_price=House.all
+    #houses_sqft=House.all
+    #houses_location=House.all
+    price_from=House.minimum(:price)
+    price_to = House.maximum(:price)
+    sqft_from = House.minimum("square_footage")
+    sqft_to = House.maximum("square_footage")
+
+
+    if(params[:price_from] != "")
+      price_from=params[:price_from]
+    end
+    if(params[:price_to] != "")
+      price_to=params[:price_to]
+    end
+
+    if(params[:sqft_from] != "")
+      sqft_from=params[:sqft_from]
+    end
+    if(params[:sqft_to] != "")
+      sqft_to=params[:sqft_to]
+    end
+
+
+
+   # if params[:price_from] != "" and params[:price_to] != ""
+    houses_price = House.where("price BETWEEN #{price_from} AND #{price_to}")
+    #end
+    #if params[:sqft_from] != "" and params[:sqft_to] != ""
+      houses_sqft = House.where("square_footage BETWEEN #{sqft_from} AND #{sqft_to}")
+    #end
+    if params[:location] != ""
+      houses_location = House.where("location = ?","#{params[:location]}")
+    else
+      houses_location = House.all
+    end
+
+    @houses= houses_price & houses_sqft & houses_location
   end
 
 

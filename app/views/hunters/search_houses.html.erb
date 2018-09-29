@@ -1,0 +1,21 @@
+<%= form_tag({controller: :houses, action: "find_houses"}, method: "get") do %>
+  <div>
+  <%= label_tag(:price_from, "Minimum price") %>
+  <%= text_field_tag(:price_from) %>
+  </div>
+  <div>
+  <%= label_tag(:price_to, "Maximum price") %>
+  <%= text_field_tag(:price_to) %>
+  </div>
+
+  <div>
+    <%= label_tag(:sqft_from, "Minimum square footage") %>
+    <%= text_field_tag(:sqft_from) %>
+  </div>
+  <div>
+    <%= label_tag(:sqft_to, "Maximum square footage") %>
+    <%= text_field_tag(:sqft_to) %>
+  </div>
+
+  <%= submit_tag("Search") %>
+<% end %>

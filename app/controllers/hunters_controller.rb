@@ -61,6 +61,9 @@ class HuntersController < ApplicationController
     end
   end
 
+  def search_houses
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

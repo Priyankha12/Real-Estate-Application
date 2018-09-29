@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+  #devise_for :hunters
   resources :inquiries
-  resources :hunters
-  resources :houses
+  #resources :hunters
+  resources :houses do
+    collection do
+      get :search
+      get :find
+    end
+  end
   #resources :realtors, :path_prefix => 'my'
 
 # devise_for :realtors, :controllers => { :registrations => 'realtors', :sessions => 'realtors' }
@@ -15,6 +21,14 @@ Rails.application.routes.draw do
       #:realtors => "realtors/realtors"
   }
 
+  devise_for :hunters, :controllers => {
+      :registrations => "hunters/registrations",
+      :sessions => "hunters/sessions",
+      :passwords => "hunters/passwords",
+      :confirmations => "hunters/confirmations",
+  }
+
+
 
   devise_scope :realtor do
     get 'sign_up', to: 'realtors/registrations#new'
@@ -25,11 +39,19 @@ Rails.application.routes.draw do
         get :realtor_houses
       end
     end
-   # get '/realtors/:id', to: 'realtors#show', as: 'realtor'
 
-    #get '/realtors/:id', to: 'realtors#show'
 
   end
+
+  devise_scope :hunter do
+    get 'sign_up', to: 'hunters/registrations#new'
+    get 'sign_in' , to: 'hunters/sessions#new'
+    delete 'sign_out', to: 'hunters/sessions#destroy'
+    resources :hunters
+    end
+
+
+
 
   #authenticated :realtor do
    # resources :realtors , module: "realtors"
@@ -42,6 +64,8 @@ Rails.application.routes.draw do
       get :realtor_houses
     end
   end
+
+  resources :hunters
 
   resources :houses do
     member do
@@ -58,5 +82,7 @@ Rails.application.routes.draw do
       get :realtor_houses
     end
   end
+
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+

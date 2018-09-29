@@ -22,21 +22,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name %>
   </div>
-
-  <div class="field">
-    <%= f.label :real_estate_company_id %>
-    <%= select("realtor", "real_estate_company_id", RealEstateCompany.all.collect{ |c| [c.name, c.id] }) %>
-  </div>
-  <p>
-  <%= link_to 'Create new real estate company', new_real_estate_company_path %></td>
-  </p>
 
   <div class="field">
     <%= f.label :phone %>
     <%= f.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_method %>
+    <%= f.text_field :contact_method %>
   </div>
 
   <div class="actions">
@@ -44,4 +41,4 @@
   </div>
 <% end %>
 
-<%= render "realtors/shared/links" %>
+<%= render "hunters/shared/links" %>

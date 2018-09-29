@@ -58,7 +58,7 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
    #end
   #
   def realtor_params
-        puts params
+        #puts params
          params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
        end
 

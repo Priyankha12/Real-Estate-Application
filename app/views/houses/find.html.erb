@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Houses</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Company</th>
+    <th>Location</th>
+    <th>Square footage</th>
+    <th>Year</th>
+    <th>Style</th>
+    <th>Price</th>
+    <th>Floors</th>
+    <th>Basement</th>
+    <th>Current owner</th>
+    <th>Realtor</th>
+    <th>Hunter ids</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @houses.each do |house| %>
+    <tr>
+      <td><%= house.id %></td>
+      <td><%= house.real_estate_company_id %></td>
+      <td><%= house.location %></td>
+      <td><%= house.square_footage %></td>
+      <td><%= house.year %></td>
+      <td><%= house.style %></td>
+      <td><%= house.price %></td>
+      <td><%= house.floors %></td>
+      <td><%= house.basement %></td>
+      <td><%= house.current_owner %></td>
+      <td><%= house.realtor_id %></td>
+      <td><%= house.hunter_ids %></td>
+      <td><%= link_to 'Show', house %></td>
+      <% if realtor_signed_in? %>
+
+        <% if house.realtor_id == current_realtor.id %>
+          <td><%= link_to 'Edit', edit_house_path(house), data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end%>
+
+        <% if house.real_estate_company_id == current_realtor.real_estate_company_id %>
+          <td><%= link_to 'Upload picture', houses_path  %></td>
+          <td><%= link_to 'View potential buyers', potential_hunters_house_path(house) %></td>
+        <%end %>
+
+      <%end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New House', new_house_path %>

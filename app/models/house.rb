@@ -3,5 +3,4 @@ class House < ApplicationRecord
   belongs_to :realtor
   has_many :inquiries
 
-
 end

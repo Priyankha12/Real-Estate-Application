@@ -23,8 +23,10 @@
         <td><%= hunter.phone %></td>
         <td><%= hunter.contact_method %></td>
         <td><%= link_to 'Show', hunter %></td>
-        <td><%= link_to 'Edit', edit_hunter_path(hunter) %></td>
+        <% if hunter == current_hunter %>
+        <td><%= link_to 'Edit', edit_hunter_registration_path(hunter) %></td>
         <td><%= link_to 'Destroy', hunter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Hunter', new_hunter_path %>
+<%= link_to 'New Hunter', new_hunter_registration_path %>

@@ -24,6 +24,9 @@
   <strong>Contact method:</strong>
   <%= @hunter.contact_method %>
 </p>
+<% if hunter_signed_in? %>
+  <%= link_to 'Search houses', search_houses_path %>
+  <% end %>
 
 <%= link_to 'Edit', edit_hunter_path(@hunter) %> |
 <%= link_to 'Back', hunters_path %>

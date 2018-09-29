@@ -11,10 +11,16 @@
     </div>
   <% end %>
 
+
+  <% if not realtor_signed_in? %>
   <div class="field">
     <%= form.label :real_estate_company_id %>
     <%= form.number_field :real_estate_company_id %>
   </div>
+    <% else %>
+    <%= form.hidden_field :real_estate_company_id, value: current_realtor.real_estate_company_id %>
+  <%end %>
+
 
   <div class="field">
     <%= form.label :location %>
@@ -56,10 +62,16 @@
     <%= form.text_field :current_owner %>
   </div>
 
-  <div class="field">
-    <%= form.label :realtor_id %>
-    <%= form.number_field :realtor_id %>
-  </div>
+  <% if not realtor_signed_in? %>
+    <div class="field">
+      <%= form.label :realtor_id %>
+      <%= form.number_field :realtor_id %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :realtor_id, value: current_realtor.id %>
+  <%end %>
+
+
 
   <div class="field">
     <%= form.label :hunter_ids %>

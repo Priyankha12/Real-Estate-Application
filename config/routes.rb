@@ -42,6 +42,12 @@ Rails.application.routes.draw do
       get :realtor_houses
     end
   end
+
+  resources :houses do
+    member do
+      get :potential_hunters
+    end
+  end
   #get '/realtors', to: 'realtors#index'
 
   resources :real_estate_companies

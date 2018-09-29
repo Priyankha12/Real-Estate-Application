@@ -37,8 +37,19 @@
         <td><%= house.realtor_id %></td>
         <td><%= house.hunter_ids %></td>
         <td><%= link_to 'Show', house %></td>
-        <td><%= link_to 'Edit', edit_house_path(house) %></td>
-        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if realtor_signed_in? %>
+
+        <% if house.realtor_id == current_realtor.id %>
+            <td><%= link_to 'Edit', edit_house_path(house), data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end%>
+
+          <% if house.real_estate_company_id == current_realtor.real_estate_company_id %>
+          <td><%= link_to 'Upload picture', houses_path  %></td>
+            <td><%= link_to 'View potential buyers', potential_hunters_house_path(house) %></td>
+        <%end %>
+
+          <%end %>
       </tr>
     <% end %>
   </tbody>

@@ -35,8 +35,6 @@ class Realtors::SessionsController < Devise::SessionsController
    # @realtor = Realtor.
   #end
    def after_sign_in_path_for(resource)
-     #format.html { redirect_to current_realtor, notice: 'Realtor successfully signed in.' }
-     #format.html { redirect_to realtor_path, notice: 'Realtor successfully signed in.' }
       current_realtor
    end
 end

@@ -24,6 +24,8 @@ class HousesController < ApplicationController
   # POST /houses
   # POST /houses.json
   def create
+
+
     @house = House.new(house_params)
 
     respond_to do |format|
@@ -61,6 +63,40 @@ class HousesController < ApplicationController
     end
   end
 
+  def potential_hunters
+    # @realtor=Realtor.new(realtor_params)
+    #puts(@houses)
+
+    #session[:houses] = params[:houses]
+    #@id=params[:id]
+    #@houses=Hunter.where("realtor_id=#{params[:id]}")
+   # hunters_string= House.find(params[:id]).select("hunter_ids")
+    #
+   # query="select hunter_ids from houses where id=#{params[:id]}"
+
+    house=House.find(params[:id])
+    #results = ActiveRecord::Base.connection.execute(query)
+  # puts(house.hunter_ids)
+    @hunters=[]
+    house.hunter_ids.scan(/\d+/) do |hunter_id|
+      puts hunter_id
+      #@hunters<<Hunter.find(hunter_id.to_i)
+    end
+    house.hunter_ids.scan(/\d+/) do |hunter_id|
+      #puts hunter_id
+      @hunters.push(Hunter.find(hunter_id.to_s))
+    end
+
+    #puts(@houses)
+    #respond_to do |format|
+    #  format.html { redirect_to houses_url(@houses) }
+    #  format.json { head :no_content }
+    #puts "Reached"
+    # puts params[:id]
+    #end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_house
@@ -69,6 +105,13 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
+     # if(not realtor_signed_in?)
       params.require(:house).permit(:id, :real_estate_company_id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :realtor_id, :hunter_ids)
+      #else
+       # params.require(:house).permit(:id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :hunter_ids)
+      #end
     end
+
+
+
 end

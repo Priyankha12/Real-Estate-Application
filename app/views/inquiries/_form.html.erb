@@ -1,4 +1,5 @@
 <%= form_with(model: inquiry, local: true) do |form| %>
+
   <% if inquiry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(inquiry.errors.count, "error") %> prohibited this inquiry from being saved:</h2>
@@ -11,7 +12,7 @@
     </div>
   <% end %>
 
-
+  <% if not realtor_signed_in? %>
   <div class="field">
     <%= form.label :hunter_id %>
     <%= form.number_field :hunter_id %>
@@ -29,6 +30,18 @@
     <%= form.label :message %>
     <%= form.text_area :message %>
   </div>
+    <%= form.hidden_field :replies, value: @inquiry.replies %>
+    <% else %>
+    <div class="field">
+      <%= form.hidden_field :hunter_id, value: @inquiry.hunter_id %>
+      <%= form.hidden_field :house_id, value: @inquiry.house_id %>
+      <%= form.hidden_field :subject, value: @inquiry.subject %>
+      <%= form.hidden_field :message, value: @inquiry.message %>
+      <%= form.label :replies %>
+      <%= form.text_field :replies %>
+    </div>
+    <% end %>
+
 
   <div class="actions">
     <%= form.submit %>

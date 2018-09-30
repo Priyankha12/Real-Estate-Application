@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_hunter! , except: [:index, :show]
+  before_action :authenticate_realtor! , except: [:index, :show]
   # GET /houses
   # GET /houses.json
   def index

@@ -25,8 +25,10 @@
   <%= @hunter.contact_method %>
 </p>
 <% if hunter_signed_in? %>
+  <% if @hunter.id == current_hunter.id %>
   <%= link_to 'Search houses', search_houses_path %>
+    <%= link_to 'Edit', edit_hunter_registration_path(@hunter) %> |
+    <%= link_to 'Submit enquiry', new_inquiry_path %>
+    <% end %>
   <% end %>
-
-<%= link_to 'Edit', edit_hunter_path(@hunter) %> |
 <%= link_to 'Back', hunters_path %>

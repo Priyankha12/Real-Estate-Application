@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Hunter:</strong>
+  <strong>House:</strong>
   <%= @inquiry.house_id %>
 </p>
 
@@ -31,6 +31,9 @@
 </p>
 
 
-
-<%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
+<% if realtor_signed_in? %>
+<%= link_to 'Reply', edit_inquiry_path(@inquiry) %> |
+  <% else %>
+  <%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
+  <% end %>
 <%= link_to 'Back', inquiries_path %>

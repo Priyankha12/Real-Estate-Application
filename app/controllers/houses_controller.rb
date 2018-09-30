@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_realtor! , except: [:index, :show]
+  #before_action :authenticate_realtor! , except: [:index, :show]
   # GET /houses
   # GET /houses.json
   def index
@@ -139,6 +139,19 @@ class HousesController < ApplicationController
     end
 
     @houses= houses_price & houses_sqft & houses_location
+  end
+
+  def add_interest
+    #puts params[:interest]
+
+    @houses=[]
+    params[:interest].each do |house|
+      @house=House.find(house)
+      @house.hunter_ids = @house.hunter_ids + "#{current_hunter.id} "
+      @house.save
+      @houses.push(@house)
+    end
+
   end
 
 

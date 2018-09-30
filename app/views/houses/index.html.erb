@@ -16,7 +16,9 @@
       <th>Basement</th>
       <th>Current owner</th>
       <th>Realtor</th>
+      <% if not hunter_signed_in? %>
       <th>Hunter ids</th>
+        <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,7 +37,9 @@
         <td><%= house.basement %></td>
         <td><%= house.current_owner %></td>
         <td><%= house.realtor_id %></td>
+        <% if not hunter_signed_in? %>
         <td><%= house.hunter_ids %></td>
+          <% end %>
         <td><%= link_to 'Show', house %></td>
         <% if realtor_signed_in? %>
 

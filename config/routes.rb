@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   #resources :hunters
   resources :houses do
     collection do
+      get :add_interest
+    end
+    collection do
       get :search
       get :find
     end
@@ -71,6 +74,7 @@ Rails.application.routes.draw do
     member do
       get :potential_hunters
     end
+
   end
   #get '/realtors', to: 'realtors#index'
 

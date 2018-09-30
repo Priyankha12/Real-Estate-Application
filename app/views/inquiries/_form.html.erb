@@ -12,34 +12,33 @@
     </div>
   <% end %>
 
-  <% if not realtor_signed_in? %>
-  <div class="field">
-    <%= form.label :hunter_id %>
-    <%= form.number_field :hunter_id %>
-  </div>
-  <div class="field">
-    <%= form.label :house_id %>
-    <%= form.number_field :house_id %>
-  </div>
-  <div class="field">
-    <%= form.label :subject %>
-    <%= form.text_field :subject %>
-  </div>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
-  </div>
-    <%= form.hidden_field :replies, value: @inquiry.replies %>
-    <% else %>
+  <% if realtor_signed_in? %>
+    <%= form.hidden_field :hunter_id, value: @inquiry.hunter_id %>
+    <%= form.hidden_field :house_id, value: @inquiry.house_id %>
+    <%= form.hidden_field :subject, value: @inquiry.subject %>
+    <%= form.hidden_field :message, value: @inquiry.message %>
     <div class="field">
-      <%= form.hidden_field :hunter_id, value: @inquiry.hunter_id %>
-      <%= form.hidden_field :house_id, value: @inquiry.house_id %>
-      <%= form.hidden_field :subject, value: @inquiry.subject %>
-      <%= form.hidden_field :message, value: @inquiry.message %>
-      <%= form.label :replies %>
-      <%= form.text_field :replies %>
+    <%= label_tag(:replies) %>
+    <%= text_field_tag(:replies,"") %>
     </div>
+
+    <% elsif hunter_signed_in? %>
+    <%= form.hidden_field :hunter_id, value: current_hunter.id %>
+    <div class="field">
+      <%= form.label :house_id %>
+      <%= form.number_field :house_id %>
+    </div>
+    <div class="field">
+      <%= form.label :subject %>
+      <%= form.text_field :subject %>
+    </div>
+
+    <div class="field">
+      <%= form.label :message %>
+      <%= form.text_area :message %>
+    </div>
+    <%= form.hidden_field :replies, value: @inquiry.replies %>
+
     <% end %>
 
 

@@ -55,10 +55,12 @@
   <%= @house.realtor_id %>
 </p>
 
+<% if not hunter_signed_in? %>
 <p>
   <strong>Hunter ids:</strong>
   <%= @house.hunter_ids %>
 </p>
+  <% end %>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'Back', houses_path %>

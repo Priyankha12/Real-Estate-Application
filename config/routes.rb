@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'realtors/registrations#new'
     get 'sign_in' , to: 'realtors/sessions#new'
     delete 'sign_out', to: 'realtors/sessions#destroy'
-    resources :realtors, :path_prefix => 'my' do
+    resources :realtors do
       member do
         get :realtor_houses
       end
@@ -66,7 +66,11 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'hunters/registrations#new'
     get 'sign_in' , to: 'hunters/sessions#new'
     delete 'sign_out', to: 'hunters/sessions#destroy'
-    resources :hunters
+    resources :hunters do
+      member do
+        get :interested_houses
+      end
+    end
     end
 
 
@@ -84,7 +88,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :hunters
+  resources :hunters do
+    member do
+      get :interested_houses
+    end
+  end
   resources :admins
 
   resources :houses do

@@ -17,8 +17,6 @@
     <th>Basement</th>
     <th>Current owner</th>
     <th>Realtor</th>
-    <th>Hunter ids</th>
-    <th></th>
     <th>Interested?</th>
     <th colspan="3"></th>
   </tr>
@@ -38,8 +36,7 @@
       <td><%= house.basement %></td>
       <td><%= house.current_owner %></td>
       <td><%= house.realtor_id %></td>
-      <td><%= house.hunter_ids %></td>
-      <td><%= link_to 'Show', house %></td>
+
       <% if realtor_signed_in? %>
 
         <% if house.realtor_id == current_realtor.id %>
@@ -54,7 +51,7 @@
 
       <%end %>
       <% if hunter_signed_in? %>
-        <% if not house.hunter_ids.include? "#{current_hunter.id}" %>
+        <% if not house.hunter_ids.split(" ").include? "#{current_hunter.id}" %>
   <td>
     Add to your interest <%= check_box_tag "interest[]", "#{house.id}"   %>
   </td>

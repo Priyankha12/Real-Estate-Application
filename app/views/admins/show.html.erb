@@ -10,13 +10,8 @@
   <%= @admin.name %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @admin.password %>
-</p>
 
 <%= link_to 'Edit', edit_admin_registration_path(@admin) %> |
-<%= link_to 'Back', admins_path %>
 
 <p>
   <%= link_to "Create realtors", new_realtor_registration_path %>
@@ -29,6 +24,10 @@
 </p>
 
 <p>
+  <%= link_to "Create houses", new_house_path %>
+</p>
+
+<p>
   <%= link_to "Show all realtors", realtors_url %>
 </p>
 
@@ -36,13 +35,15 @@
   <%= link_to "Show all house hunters", hunters_url %>
 </p>
 
-<p>
-  <%= link_to "Show all houses", houses_url %>
-</p>
 
 <p>
   <%= link_to "Show all real estate companies", real_estate_companies_url %>
 </p>
+
+<p>
+  <%= link_to "Show all houses", houses_url %>
+</p>
+
 
 
 <p>

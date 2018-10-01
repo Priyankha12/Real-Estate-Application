@@ -80,10 +80,6 @@ class HousesController < ApplicationController
   # puts(house.hunter_ids)
     @hunters=[]
     house.hunter_ids.scan(/\d+/) do |hunter_id|
-      puts hunter_id
-      #@hunters<<Hunter.find(hunter_id.to_i)
-    end
-    house.hunter_ids.scan(/\d+/) do |hunter_id|
       #puts hunter_id
       @hunters.push(Hunter.find(hunter_id.to_s))
     end
@@ -145,6 +141,7 @@ class HousesController < ApplicationController
     #puts params[:interest]
 
     #@houses=[]
+    if params[:interest]
     params[:interest].each do |house|
       @house=House.find(house)
       hunters=[]
@@ -158,8 +155,9 @@ class HousesController < ApplicationController
       @house.save
      # @houses.push(@house)
     end
-   @houses=House.all
-  end
+    end
+    @houses=House.all
+    end
 
 
   private
@@ -171,7 +169,7 @@ class HousesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
      # if(not realtor_signed_in?)
-      params.require(:house).permit(:id, :real_estate_company_id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :realtor_id, :hunter_ids)
+      params.require(:house).permit(:id, :real_estate_company_id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :realtor_id, :image)
       #else
        # params.require(:house).permit(:id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :hunter_ids)
       #end

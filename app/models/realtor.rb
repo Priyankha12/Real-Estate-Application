@@ -8,5 +8,6 @@ class Realtor < ApplicationRecord
 has_many :houses
 #accepts_nested_attributes_for :real_estate_company #, :pages
   validates :email , uniqueness: true
+  validates :real_estate_company_id, presence: true
 end
 

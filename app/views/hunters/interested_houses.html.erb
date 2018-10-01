@@ -21,7 +21,7 @@
   </thead>
 
   <tbody>
-  <% @houses.each do |house| %>
+  <% @myhouses.each do |house| %>
     <tr>
       <td><%= house.id %></td>
       <td><%= house.real_estate_company_id %></td>
@@ -34,24 +34,11 @@
       <td><%= house.basement %></td>
       <td><%= house.current_owner %></td>
       <td><%= house.realtor_id %></td>
-      <% if realtor_signed_in? %>
+      <td><%=link_to 'Create inquiry' , {:controller => "inquiries", :action => "new", :house => house.id } %>
 
-        <% if house.realtor_id == current_realtor.id %>
-          <td><%= link_to 'Edit', edit_house_path(house), data: { confirm: 'Are you sure?' } %></td>
-          <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end%>
-
-        <% if house.real_estate_company_id == current_realtor.real_estate_company_id %>
-          <td><%= link_to 'Upload picture', houses_path  %></td>
-          <td><%= link_to 'View potential buyers', potential_hunters_house_path(house) %></td>
-        <%end %>
-
-      <%end %>
-    </tr>
   <% end %>
   </tbody>
 </table>
 
 <br>
-
 

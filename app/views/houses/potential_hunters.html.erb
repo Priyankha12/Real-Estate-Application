@@ -6,7 +6,6 @@
   <thead>
   <tr>
     <th>Email</th>
-    <th>Password</th>
     <th>Full name</th>
     <th>Phone</th>
     <th>Contact method</th>
@@ -18,16 +17,14 @@
   <% @hunters.each do |hunter| %>
     <tr>
       <td><%= hunter.email %></td>
-      <td><%= hunter.password %></td>
       <td><%= hunter.full_name %></td>
       <td><%= hunter.phone %></td>
       <td><%= hunter.contact_method %></td>
-      <td><%= link_to 'Show', hunter %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<br>
+<%= link_to 'Back', houses_url %>
 
-<%= link_to 'New Hunter', new_hunter_path %>
+

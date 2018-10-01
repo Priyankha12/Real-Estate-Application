@@ -28,9 +28,10 @@
         <td><%= real_estate_company.founded %></td>
         <td><%= real_estate_company.revenue %></td>
         <td><%= real_estate_company.synopsis %></td>
-        <td><%= link_to 'Show', real_estate_company %></td>
+      <% if admin_signed_in? %>
         <td><%= link_to 'Edit', edit_real_estate_company_path(real_estate_company) %></td>
         <td><%= link_to 'Destroy', real_estate_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +39,6 @@
 
 <br>
 
-<%= link_to 'New Real Estate Company', new_real_estate_company_path %>
+<% if admin_signed_in? %>
+<%= link_to 'Create new Real Estate Company', new_real_estate_company_path %>
+<% end %>

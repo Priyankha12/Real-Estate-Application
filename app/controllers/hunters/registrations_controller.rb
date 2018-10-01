@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Hunters::RegistrationsController < Devise::RegistrationsController
-  before_action :hunter_params, only: [:create, :update]
+  before_action :hunter_params, only: [:create]
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
@@ -37,7 +37,8 @@ class Hunters::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    #super
+    super
+=begin
     respond_to do |format|
       if @hunter.update(hunter_params)
         format.html { redirect_to @hunter, notice: 'Hunter was successfully updated.' }
@@ -47,6 +48,7 @@ class Hunters::RegistrationsController < Devise::RegistrationsController
         format.json { render json: @hunter.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # DELETE /resource
@@ -71,9 +73,9 @@ class Hunters::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :phone, :contact_method])
+   end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

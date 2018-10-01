@@ -64,6 +64,17 @@ class HuntersController < ApplicationController
   def search_houses
   end
 
+  def interested_houses
+    @myhouses=[]
+    @houses=House.all
+    @houses.each do |house|
+      if house.hunter_ids.split(" ").include? "#{params[:id]}"
+        @myhouses.push(house)
+      end
+
+    end
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -14,11 +14,10 @@ class InquiriesController < ApplicationController
           @inquiries.push(Inquiry.find(inquiry.id))
         end
       end
-    end
-  else
+    else
     @inquiries=Inquiry.all
   end
-
+end
   # GET /inquiries/1
   # GET /inquiries/1.json
   def show
@@ -27,10 +26,12 @@ class InquiriesController < ApplicationController
   # GET /inquiries/new
   def new
     @inquiry = Inquiry.new
+    @house_id = params[:house]
   end
 
   # GET /inquiries/1/edit
   def edit
+    @house_id = @inquiry.house_id
   end
 
   # POST /inquiries

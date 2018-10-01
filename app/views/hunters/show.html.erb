@@ -26,9 +26,12 @@
 </p>
 <% if hunter_signed_in? %>
   <% if @hunter.id == current_hunter.id %>
-  <%= link_to 'Search houses', search_houses_path %> |
     <%= link_to 'Edit', edit_hunter_registration_path(@hunter) %> |
-    <%= link_to 'Submit enquiry', new_inquiry_path %> |
+  <%= link_to 'Search houses and update your interest', search_houses_path %> |
+    <%= link_to 'Show interested houses and submit inquiries', interested_houses_hunter_path(@hunter) %> |
+    <%= link_to 'View all real estate companies', real_estate_companies_url %> |
+    <%= link_to 'View all houses', houses_url %> |
+    <%= link_to 'View your inquiries', inquiries_url %> |
     <% end %>
   <% end %>
-<%= link_to 'Back', hunters_path %>
+

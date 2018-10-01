@@ -26,7 +26,6 @@
         <td><%= inquiry.subject %></td>
         <td><%= inquiry.message %></td>
             <td><%= inquiry.replies %></td>
-        <td><%= link_to 'Show', inquiry %></td>
         <td><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td>
         <td><%= link_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
@@ -37,7 +36,6 @@
           <td><%= inquiry.subject %></td>
           <td><%= inquiry.message %></td>
           <td><%= inquiry.replies %></td>
-          <td><%= link_to 'Show', inquiry %></td>
             <% if inquiry.house.real_estate_company == current_realtor.real_estate_company %>
           <td><%= link_to 'Submit reply', edit_inquiry_path(inquiry) %></td>
             <% end %>
@@ -48,7 +46,6 @@
           <td><%= inquiry.subject %></td>
           <td><%= inquiry.message %></td>
           <td><%= inquiry.replies %></td>
-          <td><%= link_to 'Show', inquiry %></td>
           <%end %>
 
       </tr>
@@ -58,4 +55,3 @@
 
 <br>
 
-<%= link_to 'New Inquiry', new_inquiry_path %>

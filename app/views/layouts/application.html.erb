@@ -12,15 +12,12 @@
   <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <% if  admin_signed_in? %>
+
   <p>
   <%= link_to "Realtor Sign Up", new_realtor_registration_path %>
-
-
-  <%= link_to "Hunter Sign Up", new_hunter_registration_path %>
+    <%= link_to "Hunter Sign Up", new_hunter_registration_path %>
 
   </p>
-    <% end %>
   <br>
 
     <% if not admin_signed_in? %>
@@ -46,14 +43,27 @@
       <%= link_to "Admin Sign Out", destroy_admin_session_path, method: :delete %>
   <% end %>
 
+
+
     <%= yield %>
   </body>
 <br>
   <br>
   <br>
-  <%= link_to "Go to admin page", admins_url %>
-  <%= link_to "Show all real estate companies", real_estate_companies_url %>
-  <%= link_to "Show all realtors", realtors_url %> <%= link_to "Show all house hunters", hunters_url %>
-  <%= link_to "Show all houses", houses_url %> <%= link_to "Show all inquiries", inquiries_url %>
+  <% if admin_signed_in? %>
+  <p>
+    <%= link_to "Go to my home page", current_admin %>
+  </p>
+  <% elsif realtor_signed_in? %>
+    <p>
+      <%= link_to "Go to my home page", current_realtor %>
+    </p>
+  <% elsif hunter_signed_in? %>
+  <p>
+    <%= link_to "Go to my home page", current_hunter %>
+  </p>
+  <% end %>
+
+
 
 </html>

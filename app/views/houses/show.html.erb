@@ -62,5 +62,10 @@
 </p>
   <% end %>
 
+<% if @house.image.attached? %> <!-- @post.image.present? will always return true, use attached? to check presence -->
+  <p> <strong>Image:</strong> <br>
+    <%= image_tag @house.image, height: '300', width: '500' %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'Back', houses_path %>

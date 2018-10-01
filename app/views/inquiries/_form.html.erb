@@ -24,10 +24,11 @@
 
     <% elsif hunter_signed_in? %>
     <%= form.hidden_field :hunter_id, value: current_hunter.id %>
-    <div class="field">
-      <%= form.label :house_id %>
-      <%= form.number_field :house_id %>
-    </div>
+    <%= form.hidden_field :house_id, value: @house_id %>
+ <!--   <div class="field">
+      <%#= form.label :house_id %>
+      <%#= form.number_field :house_id %>
+    </div>-->
     <div class="field">
       <%= form.label :subject %>
       <%= form.text_field :subject %>

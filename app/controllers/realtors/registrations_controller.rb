@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Realtors::RegistrationsController < Devise::RegistrationsController
-   before_action :realtor_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+   before_action :realtor_params, only: [:create, :update]
+   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
    def new
@@ -32,7 +32,19 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
    def update
-     super
+=begin
+     respond_to do |format|
+       if @realtor.update(realtor_params)
+         format.html { redirect_to @realtor, notice: 'Realtor was successfully updated.' }
+         format.json { render :show, status: :ok, location: @realtor }
+       else
+         format.html { render :edit }
+         format.json { render json: @realtor.errors, status: :unprocessable_entity }
+       end
+     end
+=end
+super
+
    end
 
   # DELETE /resource
@@ -60,12 +72,18 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
   def realtor_params
         #puts params
          params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
-       end
+  end
+
+   def update_params
+     #puts params
+     #puts :email
+     params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+     devise_parameter_sanitizer.permit(:account_update, keys: [:name,:real_estate_company_id,:phone])
+   end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

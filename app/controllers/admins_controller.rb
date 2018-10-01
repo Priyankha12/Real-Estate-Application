@@ -1,9 +1,9 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-
+  before_action :create_admin, only: [:index]
   # GET /admins
   # GET /admins.json
-  def index
+  def index #root url
     @admins = Admin.all
   end
 
@@ -71,4 +71,11 @@ class AdminsController < ApplicationController
     def admin_params
       params.require(:admin).permit(:email, :name, :password)
     end
+
+  def create_admin
+    if(Admin.first.nil?)
+      admin = Admin.create({:email => "admin@gmail.com", :name => "Admin", :password => "MasterAdmin"})
+
+    end
+  end
 end

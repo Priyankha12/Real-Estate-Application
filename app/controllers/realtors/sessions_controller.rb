@@ -7,9 +7,6 @@ class Realtors::SessionsController < Devise::SessionsController
   #after_action :set_realtor, only: [:create]
   # GET /resource/sign_in
    def new
-     if hunter_signed_in?
-       redirect_to destroy_hunter_session_path, method: :delete
-       end
      super
    end
 

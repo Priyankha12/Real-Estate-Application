@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
 
-  #devise_for :hunters
+  devise_for :admins, :controllers => {
+      :registrations => "admins/registrations",
+      :sessions => "admins/sessions",
+      :passwords => "admins/passwords",
+      :confirmations => "admins/confirmations",
+      #:realtors => "realtors/realtors"
+  }
+
+  devise_scope :admin do
+    get 'sign_up', to: 'admins/registrations#new'
+    get 'sign_in' , to: 'admins/sessions#new'
+    delete 'sign_out', to: 'admins/sessions#destroy'
+    resources :admins
+    end
+
   resources :inquiries
-  #resources :hunters
+
   resources :houses do
     collection do
       get :add_interest
@@ -12,6 +26,8 @@ Rails.application.routes.draw do
       get :find
     end
   end
+
+
   #resources :realtors, :path_prefix => 'my'
 
 # devise_for :realtors, :controllers => { :registrations => 'realtors', :sessions => 'realtors' }
@@ -37,7 +53,7 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'realtors/registrations#new'
     get 'sign_in' , to: 'realtors/sessions#new'
     delete 'sign_out', to: 'realtors/sessions#destroy'
-    resources :realtors do
+    resources :realtors, :path_prefix => 'my' do
       member do
         get :realtor_houses
       end
@@ -69,6 +85,7 @@ Rails.application.routes.draw do
   end
 
   resources :hunters
+  resources :admins
 
   resources :houses do
     member do

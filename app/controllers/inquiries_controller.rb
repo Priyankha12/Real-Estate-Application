@@ -52,8 +52,8 @@ class InquiriesController < ApplicationController
   # PATCH/PUT /inquiries/1
   # PATCH/PUT /inquiries/1.json
   def update
-    puts ("Parameters are:")
-    puts params["replies"]
+   # puts ("Parameters are:")
+   # puts params["replies"]
     if realtor_signed_in?
       if (@inquiry.replies != "")
         new_replies = @inquiry.replies + "\nRealtor #{current_realtor.id} : " + params[:replies]
@@ -61,6 +61,8 @@ class InquiriesController < ApplicationController
       else
         new_replies = "Realtor #{current_realtor.id} : " + params[:replies]
       end
+      #puts @inquiry.hunter.email
+      #RealtorMailer.with(hunter: @inquiry.hunter.email, replies: params[:replies], realtor: current_realtor.email).reply_email.deliver_now
       respond_to do |format|
         if @inquiry.update_attribute(:replies, new_replies)
           format.html {redirect_to @inquiry, notice: 'Inquiry was successfully replied.'}

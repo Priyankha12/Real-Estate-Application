@@ -56,11 +56,11 @@
       <% if hunter_signed_in? %>
         <% if not house.hunter_ids.include? "#{current_hunter.id}" %>
   <td>
-    <%= check_box_tag "interest[]", "#{house.id}"   %>
+    Add to your interest <%= check_box_tag "interest[]", "#{house.id}"   %>
   </td>
           <% else %>
           <td>
-            Added to your interest
+            Remove from your interest <td> <%= check_box_tag "interest[]", "#{house.id}" %>
           </td>
         <% end %>
 
@@ -77,7 +77,7 @@
 <br>
 
 <% if hunter_signed_in? %>
-    <%= submit_tag("Add interest") %>
+    <%= submit_tag("Update interest") %>
       <% end  %>
       <% end %>
 

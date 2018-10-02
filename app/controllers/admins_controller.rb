@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: [:show]
   before_action :create_admin, only: [:index]
   # GET /admins
   # GET /admins.json
@@ -63,19 +63,20 @@ class AdminsController < ApplicationController
   #
   # private
   #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_admin
-  #     @admin = Admin.find(params[:id])
-  #   end
+    def set_admin
+       @admin = Admin.find(params[:id])
+     end
   #
   #   # Never trust parameters from the scary internet, only allow the white list through.
   #   def admin_params
   #     params.require(:admin).permit(:email, :name, :password)
   #   end
   #
-  # def create_admin
-  #   if(Admin.first.nil?)
-  #     admin = Admin.create({:email => "admin@gmail.com", :name => "Admin", :password => "MasterAdmin"})
+   def create_admin
+     if(Admin.first.nil?)
+       admin = Admin.create({:email => "admin@gmail.com", :name => "Admin", :password => "MasterAdmin"})
   #
-  #   end
+     end
  # end
-end
+   end
+  end

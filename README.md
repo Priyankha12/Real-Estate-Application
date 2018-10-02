@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.
 
 * System dependencies
 
@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Pre-configured Admin 
+Email: admin@gmail.com
+Password: MasterAdmin

@@ -1,5 +1,6 @@
-class RealtorsController < Devise::RegistrationsController
-  before_action :set_realtor, only: [:show, :edit, :update, :destroy]
+class RealtorsController < ApplicationController
+
+    before_action :set_realtor, only: [:show, :edit, :update, :destroy]
   #before_action :authenticate_realtor! , except: [:index, :show]
 
   # GET /realtors

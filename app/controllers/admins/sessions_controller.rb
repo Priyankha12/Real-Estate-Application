@@ -10,19 +10,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    #super
-    #
-    puts "Parameters are:"
-    puts params
-    puts params[:admin][:email]
-    puts params[:admin][:password]
-    if(params[:admin][:email]=="admin@gmail.com" and params[:admin][:password]=="MasterAdmin")
-      redirect_to current_admin
-    else
-      flash[:notice] = "Unauthorized access"
-      redirect_to new_admin_session_path
-    end
-    #super
+    super
   end
 
   # DELETE /resource/sign_out

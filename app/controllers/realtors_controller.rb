@@ -90,6 +90,6 @@ class RealtorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def realtor_params
-      params.require(:realtor).permit(:email, :name, :encrypted_password, :real_estate_company_id, :phone)
+      params.require(:realtor).permit(:email, :name, :real_estate_company_id, :phone)
     end
 end

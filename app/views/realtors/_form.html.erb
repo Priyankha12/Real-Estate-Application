@@ -22,18 +22,9 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= form.password_field :encrypted_password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :encrypted_password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <!--%= form.hidden_field :encrypted_password, value: @realtor.password %-->
+
 
 
   <div class="field">

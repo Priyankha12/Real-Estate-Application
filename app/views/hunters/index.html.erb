@@ -23,10 +23,14 @@
         <td><%= hunter.phone %></td>
         <td><%= hunter.contact_method %></td>
         <td><%= link_to 'Show', hunter %></td>
-        <% if hunter == current_hunter or admin_signed_in? %>
+        <% if hunter == current_hunter %>
         <td><%= link_to 'Edit', edit_hunter_registration_path(hunter) %></td>
         <td><%= link_to 'Destroy', hunter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
+        <% if admin_signed_in? %>
+          <td><%= link_to 'Edit', edit_hunter_path(hunter) %></td>
+          <td><%= link_to 'Destroy', hunter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

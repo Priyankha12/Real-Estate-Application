@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
 # devise_for :realtors, :controllers => { :registrations => 'realtors', :sessions => 'realtors' }
 
-  devise_for :realtors, :controllers => {
+  devise_for :realtors, :path_prefix => 'my', :controllers => {
       :registrations => "realtors/registrations",
       :sessions => "realtors/sessions",
      :passwords => "realtors/passwords",
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       #:realtors => "realtors/realtors"
   }
 
-  devise_for :hunters, :controllers => {
+  devise_for :hunters, :path_prefix => 'my', :controllers => {
       :registrations => "hunters/registrations",
       :sessions => "hunters/sessions",
       :passwords => "hunters/passwords",

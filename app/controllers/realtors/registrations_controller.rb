@@ -27,11 +27,21 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
-     super
+     #@realtor = User.find(params[:id])
    end
 
   # PUT /resource
    def update
+
+=begin
+     @realtor = User.find(params[:id])
+     if @realtor.update(user_params)
+       redirect_to adminpanel_path
+     else
+       render 'edit'
+     end
+=end
+
 =begin
      respond_to do |format|
        if @realtor.update(realtor_params)

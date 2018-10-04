@@ -84,6 +84,6 @@ class HuntersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hunter_params
-      params.require(:hunter).permit(:email, :password, :full_name, :phone, :contact_method)
+      params.require(:hunter).permit(:email, :full_name, :phone, :contact_method)
     end
 end

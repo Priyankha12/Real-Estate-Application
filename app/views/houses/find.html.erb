@@ -45,13 +45,12 @@
         <% end%>
 
         <% if house.real_estate_company_id == current_realtor.real_estate_company_id %>
-          <td><%= link_to 'Upload picture', houses_path  %></td>
           <td><%= link_to 'View potential buyers', potential_hunters_house_path(house) %></td>
         <%end %>
 
       <%end %>
       <% if hunter_signed_in? %>
-        <% if not house.hunter_ids.split(" ").include? "#{current_hunter.id}" %>
+        <% if not house.hunter_ids or not house.hunter_ids.split(" ").include? "#{current_hunter.id}" %>
   <td>
     Add to your interest <%= check_box_tag "interest[]", "#{house.id}"   %>
   </td>

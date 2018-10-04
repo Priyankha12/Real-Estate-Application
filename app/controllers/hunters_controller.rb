@@ -68,9 +68,10 @@ class HuntersController < ApplicationController
     @myhouses=[]
     @houses=House.all
     @houses.each do |house|
-      if house.hunter_ids.split(" ").include? "#{params[:id]}"
+      if  house.hunter_ids and house.hunter_ids.split(" ").include? "#{params[:id]}"
         @myhouses.push(house)
-      end
+        end
+
 
     end
 

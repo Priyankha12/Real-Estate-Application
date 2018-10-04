@@ -145,12 +145,12 @@ class HousesController < ApplicationController
     params[:interest].each do |house|
       @house=House.find(house)
       hunters=[]
-      hunters=@house.hunter_ids.split(" ")
+      hunters=@house.hunter_ids.split(/\s/)
       if hunters.include? "#{current_hunter.id}"
         hunters.delete("#{current_hunter.id}")
         @house.hunter_ids=hunters.join(" ")
       else
-      @house.hunter_ids = @house.hunter_ids + "#{current_hunter.id} "
+      @house.hunter_ids = @house.hunter_ids + " #{current_hunter.id}"
       end
       @house.save
      # @houses.push(@house)

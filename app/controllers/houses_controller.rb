@@ -157,7 +157,8 @@ class HousesController < ApplicationController
     end
     end
     @houses=House.all
-    end
+  end
+
 
 
   private

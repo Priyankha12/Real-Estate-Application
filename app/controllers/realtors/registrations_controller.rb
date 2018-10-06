@@ -27,11 +27,14 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
-     #@realtor = User.find(params[:id])
+     #puts(params[:id])
+
+     #puts(@old_realtor.real_estate_company_id)
    end
 
   # PUT /resource
    def update
+     @old_realtor = Realtor.find_by(email: params[:realtor][:email])
 
 =begin
      @realtor = User.find(params[:id])
@@ -54,6 +57,14 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
      end
 =end
 super
+@realtor=Realtor.find_by(email: params[:realtor][:email])
+if not @realtor.real_estate_company_id or @old_realtor.real_estate_company_id != @realtor.real_estate_company_id
+  new_realtor = Realtor.find_by real_estate_company_id: @old_realtor.real_estate_company_id
+  if not new_realtor
+    new_realtor = Realtor.create({id: Realtor.last.id+1, email: 'dummy@gmail.com', password: 'dummmy', name: 'dummy', phone: '919', real_estate_company_id: @old_realtor.real_estate_company_id})
+  end
+  House.where("realtor_id=#{@old_realtor.id}").each {|house| house.update_attribute(:realtor_id, new_realtor.id)}
+end
 
    end
 

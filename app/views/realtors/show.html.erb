@@ -22,7 +22,7 @@
 </p>
 
 <% if @realtor == current_realtor %>
-<%= link_to 'Edit', edit_realtor_registration_path(@realtor) %> |
+<%= link_to 'Edit', edit_realtor_registration_path(:id => @realtor.id) %> |
   <%= link_to 'View Edit Delete your houses', realtor_houses_realtor_path(@realtor) %> |
   <%= link_to "List a house", new_house_path%> |
   <% end %>

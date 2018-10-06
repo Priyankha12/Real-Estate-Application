@@ -21,6 +21,7 @@ class RealtorsController < ApplicationController
 
   # GET /realtors/1/edit
   def edit
+    @old_realtor=@realtor
   end
 
   # POST /realtors
@@ -45,6 +46,15 @@ class RealtorsController < ApplicationController
   def update
     respond_to do |format|
       if @realtor.update(realtor_params)
+        if @old_realtor.real_estate_company_id != @realtor.real_estate_company_id or not @realtor.real_estate_company_id
+          new_realtor = Realtor.find_by real_estate_company_id: @old_realtor.real_estate_company_id
+          if not new_realtor
+            new_realtor = Realtor.new({ email: 'dummy@gmail.com', encrypted_password: 'dummy', name: 'dummy', phone: '919', real_estate_company_id: @old_realtor.real_estate_company_id})
+            new_realtor.save
+          end
+          House.where("realtor_id=#{@old_realtor.id}").each {|house| house.update_attribute(:realtor_id, new_realtor.id)}
+        end
+
         format.html { redirect_to @realtor, notice: 'Realtor was successfully updated.' }
         format.json { render :show, status: :ok, location: @realtor }
       else
@@ -52,6 +62,8 @@ class RealtorsController < ApplicationController
         format.json { render json: @realtor.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # DELETE /realtors/1

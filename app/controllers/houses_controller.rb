@@ -144,7 +144,7 @@ class HousesController < ApplicationController
     if params[:interest]
     params[:interest].each do |house|
       @house=House.find(house)
-      hunters=[]
+      hunters= []
       if @house.hunter_ids != nil
         hunters=@house.hunter_ids.split(/\s/)
         else @house.hunter_ids=""

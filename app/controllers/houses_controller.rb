@@ -79,10 +79,12 @@ class HousesController < ApplicationController
     #results = ActiveRecord::Base.connection.execute(query)
   # puts(house.hunter_ids)
     @hunters=[]
+    if house.hunter_ids != nil
     house.hunter_ids.scan(/\d+/) do |hunter_id|
       #puts hunter_id
       @hunters.push(Hunter.find(hunter_id.to_s))
     end
+      end
 
     #puts(@houses)
     #respond_to do |format|

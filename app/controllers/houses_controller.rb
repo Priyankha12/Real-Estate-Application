@@ -147,12 +147,13 @@ class HousesController < ApplicationController
       hunters=[]
       if @house.hunter_ids != nil
         hunters=@house.hunter_ids.split(/\s/)
+        else @house.hunter_ids=""
       end
 
       if hunters.include? "#{current_hunter.id}"
         hunters.delete("#{current_hunter.id}")
         @house.hunter_ids=hunters.join(" ")
-        else
+      else
           @house.hunter_ids = @house.hunter_ids + " #{current_hunter.id}"
         end
 

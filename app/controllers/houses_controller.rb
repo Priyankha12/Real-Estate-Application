@@ -146,7 +146,7 @@ class HousesController < ApplicationController
       @house=House.find(house)
       hunters=[]
       hunters=@house.hunter_ids.split(/\s/)
-      if hunters.include? "#{current_hunter.id}"
+      if hunters != nil and  hunters.include? "#{current_hunter.id}"
         hunters.delete("#{current_hunter.id}")
         @house.hunter_ids=hunters.join(" ")
       else

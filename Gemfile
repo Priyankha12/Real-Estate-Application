@@ -73,3 +73,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  # gem 'pg'
   #gem 'rails_12factor'
 #end
+#
+group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
+end
+

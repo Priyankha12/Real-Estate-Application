@@ -65,12 +65,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'no-reply@example.com'}
   config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
-      port: '467',
-      domain: 'gmail.com',
-      username: '',
-      password: '',
-      authentication: 'plain',
+     # :address => 'smtp.mailgun.org',
+     #  # :domain => 'mg.realtordomain.com',
+     # #:user_name => 'postmaster@mg.realtordomain.com',
+     #  #:password => 'd15d948442975af6878cdf11476ca2ab-bd350f28-02d07188',
+      :address => 'smtp.gmail.com',
+      :port => 587,
+     :user_name => 'pri12dec@gmail.com',
+     :password => 'dhoni07virat18',
+      :authentication => 'plain',
       enable_starttls_auto: true
   }
   config.action_mailer.perform_deliveries = true

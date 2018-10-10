@@ -63,7 +63,7 @@ end
         new_replies = "Realtor #{current_realtor.id} : " + params[:replies]
       end
       #puts @inquiry.hunter.email
-      #RealtorMailer.with(hunter: @inquiry.hunter.email, replies: params[:replies], realtor: current_realtor.email).reply_email.deliver_now
+      RealtorMailer.with(hunter: @inquiry.hunter.email, replies: params[:replies], realtor: current_realtor.email).reply_email.deliver_now
       respond_to do |format|
         if @inquiry.update_attribute(:replies, new_replies)
           format.html {redirect_to @inquiry, notice: 'Inquiry was successfully replied.'}

@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 
 Pre-configured Admin Email: admin@gmail.com
-Password: MasterAdmin
+Password: password
 
 https://rocky-dawn-44196.herokuapp.com/
 

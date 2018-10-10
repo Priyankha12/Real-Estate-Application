@@ -74,8 +74,11 @@ class AdminsController < ApplicationController
   #
    def create_admin
      if(Admin.first.nil?)
-       admin = Admin.create({:email => "admin@gmail.com", :name => "Admin", :password => "MasterAdmin"})
-  #
+       admin = Admin.create({:email => "admin@gmail.com", :name => "Admin", :password => "password"})
+     elsif Admin.first.password == nil
+       admin=Admin.first
+       admin.password="password"
+       admin.save
      end
  # end
    end

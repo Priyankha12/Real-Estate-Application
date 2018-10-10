@@ -29,7 +29,7 @@
 
   <div class="field">
     <%= form.label :contact_method %>
-    <%= form.text_field :contact_method %>
+    <%= select("hunter", "contact_method", %w{email text phone}) %>
   </div>
 
   <div class="actions">

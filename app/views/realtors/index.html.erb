@@ -18,7 +18,7 @@
       <tr>
         <td><%= realtor.email %></td>
         <td><%= realtor.name %></td>
-        <td><%= realtor.real_estate_company_id %></td>
+        <td><%= realtor.real_estate_company.name %></td>
         <td><%= realtor.phone %></td>
         <td><%= link_to 'Show', realtor %></td>
         <% if realtor == current_realtor %>

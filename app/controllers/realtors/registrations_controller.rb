@@ -11,6 +11,7 @@ class Realtors::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
+     #@realtor = Realtor.new(realtor_params)
      @realtor = Realtor.new(realtor_params)
      #puts(realtor_params)
      #puts(Realtor.columns)
@@ -92,13 +93,15 @@ end
   #
   def realtor_params
         #puts params
-         params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
+        params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
+    #params.require(:realtor).permit(:email, :name, :password, :phone)
   end
 
    def update_params
      #puts params
      #puts :email
      params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
+    # params.require(:realtor).permit(:email, :name, :password, :real_estate_company_id, :phone)
    end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -115,4 +118,7 @@ end
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  #
+
+
 end

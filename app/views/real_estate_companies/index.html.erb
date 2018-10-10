@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Real Estate Companies</h1>
-
+<% if @real_estate_companies.any? %>
 <table>
   <thead>
     <tr>
@@ -36,6 +36,9 @@
     <% end %>
   </tbody>
 </table>
+  <% else %>
+  <h1>Sorry! There are no real estate companies</h1>
+  <% end %>
 
 <br>
 

@@ -1,6 +1,8 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+ <% if not realtor_signed_in? %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -16,7 +18,13 @@
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end -%>
+  <% end %>
+    <% elsif realtor_signed_in? %>
+    <% current_realtor.email %><br>
+    <% currenr_realtor.password %><br>
+    <%= f.hidden_field :email, value: current_realtor.email %>
+    <%= f.hidden_field :password, value: current_realtor.password %>
+    <% end %>
 
   <div class="actions">
     <%= f.submit "Log in" %>

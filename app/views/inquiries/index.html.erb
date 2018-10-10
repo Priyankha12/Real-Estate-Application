@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Inquiries</h1>
-
+<% if @inquiries.any? %>
 <table>
   <thead>
     <tr>
@@ -21,7 +21,7 @@
         <% if hunter_signed_in? %>
           <% if inquiry.hunter_id == current_hunter.id %>
         <td><%= inquiry.id %></td>
-        <td><%= inquiry.hunter_id %></td>
+        <td><%= inquiry.hunter.full_name %></td>
         <td><%= inquiry.house_id %></td>
         <td><%= inquiry.subject %></td>
         <td><%= inquiry.message %></td>
@@ -31,7 +31,7 @@
             <% end %>
           <% elsif realtor_signed_in? %>
           <td><%= inquiry.id %></td>
-          <td><%= inquiry.hunter_id %></td>
+          <td><%= inquiry.hunter.full_name %></td>
           <td><%= inquiry.house_id %></td>
           <td><%= inquiry.subject %></td>
           <td><%= inquiry.message %></td>
@@ -41,17 +41,21 @@
             <% end %>
           <% else %>
           <td><%= inquiry.id %></td>
-          <td><%= inquiry.hunter_id %></td>
+          <td><%= inquiry.hunter.full_name %></td>
           <td><%= inquiry.house_id %></td>
           <td><%= inquiry.subject %></td>
           <td><%= inquiry.message %></td>
           <td><%= inquiry.replies %></td>
+          <td><%= link_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <%end %>
 
       </tr>
     <% end %>
   </tbody>
 </table>
+  <% else %>
+  <h1>Sorry! There are no inquiries</h1>
+  <% end %>
 
 <br>
 

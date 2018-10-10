@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Hunters</h1>
-
+<% if @hunters.any? %>
 <table>
   <thead>
   <tr>
@@ -24,6 +24,9 @@
   <% end %>
   </tbody>
 </table>
+  <% else %>
+  <h1> Sorry! There are no hunters</h1>
+  <% end %>
 
 <%= link_to 'Back', houses_url %>
 

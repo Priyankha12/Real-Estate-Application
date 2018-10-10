@@ -2,6 +2,8 @@
 
 <h1>Houses</h1>
 
+<% if @houses.any? %>
+
 <table>
   <thead>
     <tr>
@@ -36,7 +38,7 @@
         <td><%= house.floors %></td>
         <td><%= house.basement %></td>
         <td><%= house.current_owner %></td>
-        <td><%= house.realtor_id %></td>
+        <td><%= house.realtor.name %></td>
         <% if admin_signed_in? %>
         <td><%= house.hunter_ids %></td>
           <td><%= link_to 'Edit', edit_house_path(house) %></td>
@@ -61,7 +63,9 @@
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+  <h1>Sorry! There are no houses</h1>
+<% end %>
 <br>
 
 

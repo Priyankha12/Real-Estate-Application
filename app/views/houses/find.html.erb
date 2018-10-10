@@ -2,7 +2,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Houses</h1>
-
 <table>
   <thead>
   <tr>
@@ -35,7 +34,7 @@
       <td><%= house.floors %></td>
       <td><%= house.basement %></td>
       <td><%= house.current_owner %></td>
-      <td><%= house.realtor_id %></td>
+      <td><%= house.realtor.name %></td>
 
       <% if realtor_signed_in? %>
 
@@ -70,6 +69,7 @@
 
   </tbody>
 </table>
+
 <br>
 
 <% if hunter_signed_in? %>

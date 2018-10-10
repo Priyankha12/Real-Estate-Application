@@ -93,6 +93,18 @@ class RealtorsController < ApplicationController
   #end
   end
 
+  def switch
+    current_realtor=nil
+    realtor_signed_in=false
+    hunter_signed_in=true
+    current_hunter=Hunter.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to current_hunter, notice: 'Switched to hunter account' }
+      format.json { head :no_content }
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_realtor

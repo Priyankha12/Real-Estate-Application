@@ -13,7 +13,7 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @realtor.real_estate_company.id %>
+  <%= @realtor.real_estate_company.name %>
 </p>
 
 <p>
@@ -22,12 +22,18 @@
 </p>
 
 <% if @realtor == current_realtor %>
-<%= link_to 'Edit', edit_realtor_registration_path(:id => @realtor.id) %> |
-  <%= link_to 'View Edit Delete your houses', realtor_houses_realtor_path(@realtor) %> |
-  <%= link_to "List a house", new_house_path%> |
+<%= link_to 'Edit', edit_realtor_registration_path(:id => @realtor.id) %> <br>
+  <%= link_to 'View Edit Delete your houses', realtor_houses_realtor_path(@realtor) %>  <br>
+  <%= link_to "List a house", new_house_path%> <br>
   <% end %>
-<%= link_to "View all houses and view potential buyers in your company", houses_url %> |
-<%= link_to "View and reply to inquiries", inquiries_url %> |
+<%= link_to "View all houses and view potential buyers in your company", houses_url %> <br>
+<%= link_to "View and reply to inquiries", inquiries_url %> <br>
 
+<% if realtor_signed_in? %>
+<%= hunter=Hunter.find_by_email current_realtor.email  %>
+<% if hunter != nil  %>
+  <%= link_to  "Switch to your hunter account", new_hunter_session_path%>
+  <% end %>
+<% end %>
 
 <%= link_to 'View all realtors', realtors_path %>

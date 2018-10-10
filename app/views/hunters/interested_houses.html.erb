@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Houses</h1>
-
+<% if @myhouses.any? %>
 <table>
   <thead>
   <tr>
@@ -33,12 +33,15 @@
       <td><%= house.floors %></td>
       <td><%= house.basement %></td>
       <td><%= house.current_owner %></td>
-      <td><%= house.realtor_id %></td>
+      <td><%= house.realtor.name %></td>
       <td><%=link_to 'Create inquiry' , {:controller => "inquiries", :action => "new", :house => house.id } %>
 
   <% end %>
   </tbody>
 </table>
+  <% else %>
+  <h1>Sorry! There are no houses</h1>
+  <% end %>
 
 <br>
 

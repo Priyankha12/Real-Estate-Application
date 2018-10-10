@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= f.label :contact_method %>
-    <%= f.text_field :contact_method, autofocus: true, autocomplete: "contact_method"%>
+    <%= select("hunter", "contact_method", %w{email text phone}) %>
   </div>
 
   <div class="field">

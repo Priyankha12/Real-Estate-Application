@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :realtors do
       member do
         get :realtor_houses
+        get :switch
       end
     end
 
@@ -85,6 +86,7 @@ Rails.application.routes.draw do
   resources :realtors do
     member do
       get :realtor_houses
+      get :switch
     end
   end
 

@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version 2.
+* Ruby version 2.4.4
 
 * System dependencies
 
@@ -29,3 +29,6 @@ Password: password
 https://rocky-dawn-44196.herokuapp.com/
 
 Only the admin's account is preconfigured.
+
+RealEstateCompany's Model and Controller have been fully tested.
+

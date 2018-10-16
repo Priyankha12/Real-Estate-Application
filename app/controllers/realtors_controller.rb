@@ -1,7 +1,6 @@
 class RealtorsController < ApplicationController
 
     before_action :set_realtor, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_realtor! , except: [:index, :show]
 
   # GET /realtors
   # GET /realtors.json
@@ -29,7 +28,6 @@ class RealtorsController < ApplicationController
   def create
     @realtor = Realtor.new(realtor_params)
     puts(realtor_params)
-    #puts(Realtor.columns)
     respond_to do |format|
       if @realtor.save
         format.html { redirect_to @realtor, notice: 'Realtor was successfully created.' }
@@ -67,27 +65,12 @@ class RealtorsController < ApplicationController
 
 
   def realtor_houses
-   # @realtor=Realtor.new(realtor_params)
-  #puts(@houses)
-
-  #session[:houses] = params[:houses]
    @id=params[:id]
   @houses=House.where("realtor_id=#{params[:id]}")
-  #puts(@houses)
-  #respond_to do |format|
-  #  format.html { redirect_to houses_url(@houses) }
-  #  format.json { head :no_content }
-  #puts "Reached"
-   # puts params[:id]
-  #end
   end
     def switch
       current_realtor=nil
-     # realtor_signed_in=false
-
       current_hunter=Hunter.find(params[:id])
-
-     # current_hunter=Hunter.find(params[:id])
       respond_to do |format|
         format.html { redirect_to current_hunter, notice: 'Switched to hunter account' }
         format.json { head :no_content }

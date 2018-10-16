@@ -38,17 +38,6 @@ class Hunters::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-=begin
-    respond_to do |format|
-      if @hunter.update(hunter_params)
-        format.html { redirect_to @hunter, notice: 'Hunter was successfully updated.' }
-        format.json { render :show, status: :ok, location: @hunter }
-      else
-        format.html { render :edit }
-        format.json { render json: @hunter.errors, status: :unprocessable_entity }
-      end
-    end
-=end
   end
 
   # DELETE /resource

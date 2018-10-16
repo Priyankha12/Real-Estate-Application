@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_realtor! , except: [:index, :show]
+
   # GET /houses
   # GET /houses.json
   def index
@@ -65,19 +65,9 @@ class HousesController < ApplicationController
 
 
   def potential_hunters
-    # @realtor=Realtor.new(realtor_params)
-    #puts(@houses)
-
-    #session[:houses] = params[:houses]
-    #@id=params[:id]
-    #@houses=Hunter.where("realtor_id=#{params[:id]}")
-   # hunters_string= House.find(params[:id]).select("hunter_ids")
-    #
-   # query="select hunter_ids from houses where id=#{params[:id]}"
 
     house=House.find(params[:id])
-    #results = ActiveRecord::Base.connection.execute(query)
-  # puts(house.hunter_ids)
+
     @hunters=[]
     if house.hunter_ids != nil
     house.hunter_ids.scan(/\d+/) do |hunter_id|
@@ -86,22 +76,14 @@ class HousesController < ApplicationController
     end
       end
 
-    #puts(@houses)
-    #respond_to do |format|
-    #  format.html { redirect_to houses_url(@houses) }
-    #  format.json { head :no_content }
-    #puts "Reached"
-    # puts params[:id]
-    #end
+
   end
 
   def search
   end
 
   def find
-    #houses_price=House.all
-    #houses_sqft=House.all
-    #houses_location=House.all
+
     price_from=House.minimum(:price)
     price_to = House.maximum(:price)
     sqft_from = House.minimum("square_footage")
@@ -124,12 +106,11 @@ class HousesController < ApplicationController
 
 
 
-   # if params[:price_from] != "" and params[:price_to] != ""
+
     houses_price = House.where("price BETWEEN #{price_from} AND #{price_to}")
-    #end
-    #if params[:sqft_from] != "" and params[:sqft_to] != ""
+
       houses_sqft = House.where("square_footage BETWEEN #{sqft_from} AND #{sqft_to}")
-    #end
+
     if params[:location] != ""
       houses_location = House.where("location = ?","#{params[:location]}")
     else
@@ -140,9 +121,7 @@ class HousesController < ApplicationController
   end
 
   def add_interest
-    #puts params[:interest]
 
-    #@houses=[]
     if params[:interest]
     params[:interest].each do |house|
       @house=House.find(house)
@@ -160,7 +139,7 @@ class HousesController < ApplicationController
         end
 
       @house.save
-     # @houses.push(@house)
+
     end
     end
     @houses=House.all
@@ -176,11 +155,7 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-     # if(not realtor_signed_in?)
       params.require(:house).permit(:id, :real_estate_company_id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :realtor_id, :image)
-      #else
-       # params.require(:house).permit(:id, :location, :square_footage, :year, :style, :price, :floors, :basement, :current_owner, :hunter_ids)
-      #end
     end
 
 

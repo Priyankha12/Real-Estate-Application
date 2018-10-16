@@ -38,7 +38,7 @@
         <td><%= house.floors %></td>
         <td><%= house.basement %></td>
         <td><%= house.current_owner %></td>
-        <td><%= house.realtor.name %></td>
+        <td><%= house.realtor_id %></td>
         <% if admin_signed_in? %>
         <td><%= house.hunter_ids %></td>
           <td><%= link_to 'Edit', edit_house_path(house) %></td>
